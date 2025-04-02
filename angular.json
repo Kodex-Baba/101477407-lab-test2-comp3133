@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/101477407-lab-test2-comp3133",
+            "outputPath": "dist/101477407-lab-test2-comp3133/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

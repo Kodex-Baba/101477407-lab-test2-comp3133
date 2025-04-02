@@ -5,5 +5,10 @@ import { MissiondetailsComponent } from './missiondetails/missiondetails.compone
 
 export const routes: Routes = [
   { path: '', component: MissionlistComponent },
-  { path: 'mission/:id', component: MissiondetailsComponent }
+  {
+    path: 'mission/:id',
+    loadComponent: () => import('./missiondetails/missiondetails.component').then(m => m.MissiondetailsComponent),
+    data: { renderMode: 'client' } // This disables prerendering on vercel for this route
+  }
+
 ];
