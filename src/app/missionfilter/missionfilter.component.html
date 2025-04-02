@@ -1,0 +1,7 @@
+<mat-form-field appearance="outline" class="w-100 mb-3" >
+  <mat-label style="color: antiquewhite">Filter by Launch Year</mat-label>
+  <mat-select [(value)]="selectedYear" (selectionChange)="onYearChange()">
+    <mat-option [value]="''" style="color: #fdf1f2">All Years</mat-option>
+    <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+  </mat-select>
+</mat-form-field>

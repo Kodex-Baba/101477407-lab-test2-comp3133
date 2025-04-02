@@ -1,0 +1,36 @@
+<div class="container py-4">
+  <h2
+    style="color: #fdf1f2"
+  >SpaceX Launches</h2>
+
+  <app-missionfilter (yearSelected)="filterByYear($event)"></app-missionfilter>
+
+  <div *ngIf="loading">Loading missions...</div>
+  <div *ngIf="error" class="text-danger">{{ error }}</div>
+
+  <div *ngIf="!loading && launches.length > 0">
+    <mat-card *ngFor="let mission of launches" class="mb-3">
+      <mat-card-header>
+        <mat-card-title>{{ mission.mission_name }} ({{ mission.launch_year }})</mat-card-title>
+        <mat-card-subtitle>Flight #: {{ mission.flight_number }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image
+           *ngIf="mission.links?.mission_patch_small"
+           [src]="mission.links.mission_patch_small"
+           alt="Mission Patch"
+           style="max-height: 100px; max-width: 100px;"
+      />
+
+      <mat-card-content>
+        <p>{{ mission.details || 'No details available.' }}</p>
+        <p><strong>Rocket:</strong> {{ mission.rocket.rocket_name }} ({{ mission.rocket.rocket_type }})</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <a mat-button color="primary" [routerLink]="['/mission', mission.flight_number]">View Details</a>
+        <a mat-button color="accent" [href]="mission.links?.wikipedia" target="_blank">Wikipedia</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
