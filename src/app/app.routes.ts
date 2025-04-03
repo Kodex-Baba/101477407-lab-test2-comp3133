@@ -8,7 +8,8 @@ export const routes: Routes = [
   {
     path: 'mission/:id',
     loadComponent: () => import('./missiondetails/missiondetails.component').then(m => m.MissiondetailsComponent),
-    data: { renderMode: 'client' } // This disables prerendering on vercel for this route
+    data: { renderMode: 'client' }  // optional coz SSR is disabled
   }
+
 
 ];
